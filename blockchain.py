@@ -7,15 +7,12 @@ class Blockchain():
         self.chain = [self.new_genesis_block()]
 
     # First block (genesis) prev = 0
-    def new_genesis_block():
-        return Block(id=1, data=None, timestamp=datetime.now(), prev="0" )
+    def new_genesis_block(self):
+        return Block(id=1, data=None, timestamp=datetime.now(), prev="0")
     
-    def display(self):
-        return self.chain
-    
-    # def add_block(self, new_block):
-    #     new_block.prev = self.chain[-1].hash
-    #     new_block.hash = new_block.generate_hash()
+    def add_block(self, new_block):
+        # new_block.id = int(self.chain[-1].id) + 1
+        new_block.prev = self.chain[-1].hash
+        new_block.hash = new_block.generate_hash()
+        self.chain.append(new_block)
 
-blockchain = Blockchain()
-print(blockchain.chain)
