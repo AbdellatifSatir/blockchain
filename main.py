@@ -24,7 +24,7 @@ new_block3 = Block(
 blockchain.add_block(new_block2)
 blockchain.add_block(new_block3)
 
-# Verify that the new block has been added
+# Verify that the new blocks has been added
 for block in blockchain.chain:
     print(
         f"Block : {block.id}\n",
