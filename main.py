@@ -24,6 +24,8 @@ new_block3 = Block(
 blockchain.add_block(new_block2)
 blockchain.add_block(new_block3)
 
+print("Length of blockchain : ", blockchain.__len__())
+
 # Verify that the new blocks has been added
 for block in blockchain.chain:
     print(
@@ -34,5 +36,11 @@ for block in blockchain.chain:
         f"Hash: {block.hash}\n",
     )
 
+# Verify the blocks
+print("Verified Block : ",blockchain.verify_block())
 
+# Change an existing block and verify
+print(blockchain.chain[-1].data)
+blockchain.chain[-1].data = "this data has been changed"
+print(blockchain.chain[-1].data)
 print("Verified Block : ",blockchain.verify_block())
