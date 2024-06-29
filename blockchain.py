@@ -8,11 +8,21 @@ class Blockchain():
 
     # First block (genesis) prev = 0
     def new_genesis_block(self):
-        return Block(id=1, data=None, timestamp=datetime.now(), prev="0")
+        return Block(id=1, data=None, timestamp=datetime.now(), prev=0)
     
     def add_block(self, new_block):
         # new_block.id = int(self.chain[-1].id) + 1
         new_block.prev = self.chain[-1].hash
         new_block.hash = new_block.generate_hash()
         self.chain.append(new_block)
+
+    def verify_block(self):
+        for i in range(1, len(self.chain)):
+            current_prev = self.chain[i].prev
+            previous_hash = self.chain[i-1].hash
+
+            if( current_prev != previous_hash):
+                return False
+        return True
+
 
