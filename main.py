@@ -18,6 +18,7 @@ new_block3 = Block(
     id = id + 1,
     data = "simple data",
     timestamp = datetime.now(),
+    # prev = blockchain.chain[-1].hash
     prev = blockchain.chain[-1].hash
 )
 
