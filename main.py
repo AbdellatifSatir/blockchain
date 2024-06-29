@@ -33,4 +33,6 @@ for block in blockchain.chain:
         f"Prev Hash: {block.prev}\n",
         f"Hash: {block.hash}\n",
     )
-    
+
+
+print("Verified Block : ",blockchain.verify_block())

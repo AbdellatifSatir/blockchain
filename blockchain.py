@@ -18,11 +18,13 @@ class Blockchain():
 
     def verify_block(self):
         for i in range(1, len(self.chain)):
-            current_prev = self.chain[i].prev
-            previous_hash = self.chain[i-1].hash
 
-            if( current_prev != previous_hash):
+            current_block = self.chain[i]
+            prev_block = self.chain[i-1]
+            
+            if((current_block.prev != prev_block.hash) or (current_block.hash != current_block.generate_hash())):
                 return False
+            
         return True
 
 
