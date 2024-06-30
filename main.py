@@ -30,6 +30,8 @@ new_block2 = Block(id=id+1,data={'price':10,'name':'prd1'},timestamp=datetime.no
 id = id + 1
 new_block3 = Block(id=id+1,data="simple data",timestamp=datetime.now(),prev=blockchain.chain[-1].hash)
 
+new_block2.display()
+
 print("Mine block....")
 blockchain.add_block(new_block2)
 print("Mine block....")
@@ -46,6 +48,8 @@ for block in blockchain.chain:
         f"Timestamp: {block.timestamp}\n",
         f"Prev Hash: {block.prev}\n",
         f"Hash: {block.hash}\n",
+
+        f"Nonce: {block.nonce}\n",
     )
 
 # Verify the blocks

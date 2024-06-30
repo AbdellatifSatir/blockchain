@@ -11,17 +11,18 @@ class Block():
         self.nonce = 0 #iterations
 
     def display(self):
-        return self.id + self.data + self.timestamp + self.prev
+        return self.id + self.data + self.timestamp + self.prev + str(self.nonce)
 
     def generate_hash(self):
-        data = self.id + self.data + self.timestamp + self.prev
+        data = self.id + self.data + self.timestamp + self.prev + self.nonce
         return sha256(data.encode("UTF-8")).hexdigest()
     
     def mine_block(self, difficulty):
         target = '0' * difficulty
-        while self.hash[0:difficulty] != target:
+        while self.hash[:difficulty] != target:
             self.nonce += 1
+            print(self.nonce)
             self.hash = self.generate_hash()
-
+            print(self.hash)
         print(f"Block mined: {self.hash}")
     

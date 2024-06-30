@@ -5,7 +5,7 @@ class Blockchain():
 
     def __init__(self):
         self.chain = [self.new_genesis_block()]
-        self.difficulty = 2 #zeros
+        self.difficulty = 1 #zeros
 
     def __len__(self):
         return len(self.chain)
