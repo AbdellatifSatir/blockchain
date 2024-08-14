@@ -7,22 +7,22 @@ class Block():
         self.data = str(data)
         self.timestamp = str(timestamp)
         self.prev = str(prev)
+        self.nonce = 0 #iterations
         self.hash = self.generate_hash()
-        # self.nonce = 0 #iterations
 
     def display(self):
-        return self.id + self.data + self.timestamp + self.prev #+ str(self.nonce)
+        return self.id + self.data + self.timestamp + self.prev + str(self.nonce)
 
     def generate_hash(self):
-        data = self.id + self.data + self.timestamp + self.prev #+ self.nonce
+        data = self.id + self.data + self.timestamp + self.prev + str(self.nonce)
         return sha256(data.encode("UTF-8")).hexdigest()
     
-    # def mine_block(self, difficulty):
-    #     target = '0' * difficulty
-    #     while self.hash[:difficulty] != target:
-    #         self.nonce += 1
-    #         print(self.nonce)
-    #         self.hash = self.generate_hash()
-    #         print(self.hash)
-    #     print(f"Block mined: {self.hash}")
+    def mine_block(self, difficulty):
+        target = '0' * difficulty
+        while self.hash[:difficulty] != target:
+            self.nonce += 1
+            print("nonce=", self.nonce)
+            self.hash = self.generate_hash()
+            print(self.hash,'\n')
+        print(f"Block mined: {self.hash}")
     

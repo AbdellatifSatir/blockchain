@@ -5,7 +5,7 @@ class Blockchain():
 
     def __init__(self):
         self.chain = [self.new_genesis_block()]
-        self.difficulty = 1 #zeros
+        self.difficulty = 3 #zeros
 
     def __len__(self):
         return len(self.chain)
@@ -15,10 +15,9 @@ class Blockchain():
         return Block(id=1, data=None, timestamp=datetime.now(), prev=0)
     
     def add_block(self, new_block):
-        # new_block.id = int(self.chain[-1].id) + 1
         new_block.prev = self.chain[-1].hash
-        new_block.hash = new_block.generate_hash()
-        # new_block.mine_block(self.difficulty)
+        # new_block.hash = new_block.generate_hash()
+        new_block.mine_block(self.difficulty)
         self.chain.append(new_block)
 
     def verify_block(self):
